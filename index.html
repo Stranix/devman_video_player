@@ -4,17 +4,39 @@
     <meta charset="UTF-8">
     <title>Video Player</title>
     <link rel="stylesheet" href="static/css/font-awesome.min.css">
+    <style>
+      #player {
+          width: 800px;
+          height: 600px;
+      }
+      .js-video-container {
+          width: 100%;
+          height: 100%;
+      }
+      .player-control {
+          background-color: #000000;
+      }
+      .player-control > button {
+          border-style: none;
+          cursor: pointer;
+          background-color: rgba(28,28,28,0);
+      }
+      .player-control i {
+          color: #FFFFFF;
+          text-align: center;
+      }
+    </style>
   </head>
   <body>
     <div id="content">
-      <div id="player" style="width: 800px; height: 600px;">
-        <div class="js-video-container" style="width: 100%; height: 100%"></div>
-        <div style="background-color: #000000">
-          <button type="button" class="js-play-button" style="border-style: none;cursor: pointer;background-color: rgba(28,28,28,0)">
-            <i class="fa fa-play" aria-hidden="true" style="color: #FFFFFF;text-align: center"></i>
+      <div id="player">
+        <div class="js-video-container"></div>
+        <div class="player-control">
+          <button type="button" class="js-play-button">
+            <i class="fa fa-play" aria-hidden="true"></i>
           </button>
-          <button type="button" class="js-pause-button" hidden style="border-style: none;cursor: pointer;background-color: rgba(28,28,28,0)">
-            <i class="fa fa-pause" aria-hidden="true" style="color: #FFFFFF;text-align: center"></i>
+          <button type="button" class="js-pause-button" hidden>
+            <i class="fa fa-pause" aria-hidden="true"></i>
           </button>
         </div>
       </div>
