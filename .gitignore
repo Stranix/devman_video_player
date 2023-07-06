@@ -1,2 +1,4 @@
 .idea/
 .env/
+requirements.txt
+reloder.py
