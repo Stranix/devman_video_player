@@ -1,0 +1,31 @@
+.player-main {
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+    height: 600px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 5);
+}
+
+.player-main__container {
+    flex-grow: 1;
+}
+
+.player-control {
+    display: flex;
+    align-items: center;
+    background-color: #000000;
+}
+
+.button_separator {
+    flex-grow: 1;
+}
+
+.player-button {
+    border-style: none;
+    cursor: pointer;
+    background-color: rgba(28, 28, 28, 0);
+    font-size: 20px;
+    color: #FFFFFF;
+    width: 35px;
+    height: 35px;
+}

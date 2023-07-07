@@ -1,5 +1,7 @@
 ## Верстаем видеоплеер
-Учебная верстка видеоплеера.
+Учебная верстка видеоплеера.  
+
+![screenshot demo](https://github.com/Stranix/devman_video_player/blob/master/static/promo.jpg?raw=true)
 
 В проекте используются шрифты [Font Awesome](https://fontawesome.ru/)  
 Библиотека видеоплеера [тут](https://github.com/devmanorg/video-player-jslib).
