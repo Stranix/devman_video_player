@@ -44,6 +44,15 @@
           width: 36px;
           height: 41px;
       }
+      .progress-bar-container {
+          display: flex;
+          flex-grow: 1;
+          margin-left: 2px;
+      }
+
+      .progress-bar-slider {
+          background-color: yellow;
+      }
   </style>
 </head>
 <body>
@@ -62,10 +71,18 @@
     <button class="js-volume-button player-button">
       <i class="fa fa-volume-off" aria-hidden="true"></i>
     </button>
-    <div class="button_separator"></div>
+
+    <div class="progress-bar-container">
+      <div class="js-current-time"></div>
+      <div class=""></div>
+      <div class="button_separator"></div>
+      <div class="js-duration"></div>
+    </div>
+
     <button class="js-fullscreen-button player-button">
       <i class="fa fa-expand" aria-hidden="true"></i>
     </button>
+
   </div>
 </div>
 
