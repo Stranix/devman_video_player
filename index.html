@@ -1,156 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Video Player</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="static/css/font-awesome.min.css">
-  <link rel="icon" type="image/x-icon" href="static/favicon.ico">
-  <style>
-      :root {
-          font-family: "Roboto", sans-serif;
-          color: white;
-      }
+  <head>
+    <meta charset="UTF-8">
+    <title>Video Player</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+          integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"
+    >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/css/main.css">
+    <link rel="icon" type="image/x-icon" href="static/favicon.ico">
+  </head>
+  <body>
+    <div id="player" class="player-main">
+      <div class="js-video-container player-main__container"></div>
+      <div class="player-control">
+        <button type="button" class="js-play-button player-button">
+          <i class="fa fa-play" aria-hidden="true"></i>
+        </button>
+        <button type="button" class="js-pause-button player-button" hidden>
+          <i class="fa fa-pause" aria-hidden="true"></i>
+        </button>
+        <button class="js-mute-button player-button" hidden>
+          <i class="fa fa-volume-up" aria-hidden="true"></i>
+        </button>
+        <button class="js-volume-button player-button">
+          <i class="fa fa-volume-off" aria-hidden="true"></i>
+        </button>
 
-      .player-main {
-          display: flex;
-          flex-direction: column;
-          width: 800px;
-          height: 600px;
-          box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-          margin: 10px;
+        <div class="progress-bar__container">
+          <div class="js-current-time"></div>
+          <div class="js-progress progress-bar">
+            <div class="js-progress-slider progress-indicator"></div>
+            <div class="progress-handle"></div>
+          </div>
+          <div class="js-duration"></div>
+        </div>
 
-      }
+        <button class="js-fullscreen-button player-button">
+          <i class="fa fa-expand" aria-hidden="true"></i>
+        </button>
 
-      .player-main__container {
-          flex-grow: 1;
-      }
-
-      .player-control {
-          display: flex;
-          align-items: center;
-          background-color: #000000;
-      }
-
-      .button_separator {
-          flex-grow: 1;
-      }
-
-      .player-button {
-          box-sizing: border-box;
-          border-style: none;
-          cursor: pointer;
-          background-color: transparent;
-          font-size: 20px;
-          color: #FFFFFF;
-          width: 36px;
-          height: 41px;
-      }
-      .progress-bar-container {
-          background-color: #000;
-          height: 17px;
-          flex-grow: 2;
-          margin-left: 2px;
-          display: flex;
-          flex-direction: row;
-      }
-
-      .progress-bar__progress {
-          width: 100%;
-          margin: 6px 10px;
-      }
-
-      .progress-bar-slider {
-          display: inline-block;
-          background-color: red;
-          height: 0.3rem;
-          border-radius: 1rem;
-      }
-
-      .dot {
-          display: inline-block;
-          height: 0.5rem;
-          width: 0.5rem;
-          margin-left: -0.35rem;
-          background-color: red;
-          border: #fff solid 0.2rem;
-          border-radius: 50%;
-          box-shadow: 0 0 0.2rem rgba(0,0,0,0.5);
-          transition: all 300ms ease-in-out 0s;
-      }
-
-      .progress-bar {
-          display: flex;
-          flex-grow: 1;
-          margin: 5px 12px;
-        }
-
-        .progress-indicator {
-          background-color: red;
-          height: 6px;
-          border-radius: 3px;
-        }
-
-      .progress-handle {
-          background-color: red;
-          width: 8px;
-          height: 8px;
-          margin-top: -4px;
-          margin-left: -6px;
-          border-radius: 50%;
-          border: 3px solid white;
-          box-shadow:  0 0 5px 5px rgba(0, 0, 0, 0.5);
-          opacity: 0;
-          transition-property: opacity;
-          transition-duration: 0.3s;
-      }
-
-      .progress-bar:hover .progress-handle {
-          opacity: 100%;
-      }
-
-  </style>
-</head>
-<body>
-<div id="player" class="player-main">
-  <div class="js-video-container player-main__container"></div>
-  <div class="player-control">
-    <button type="button" class="js-play-button player-button">
-      <i class="fa fa-play" aria-hidden="true"></i>
-    </button>
-    <button type="button" class="js-pause-button player-button" hidden>
-      <i class="fa fa-pause" aria-hidden="true"></i>
-    </button>
-    <button class="js-mute-button player-button" hidden>
-      <i class="fa fa-volume-up" aria-hidden="true"></i>
-    </button>
-    <button class="js-volume-button player-button">
-      <i class="fa fa-volume-off" aria-hidden="true"></i>
-    </button>
-
-    <div class="progress-bar-container">
-      <div class="js-current-time"></div>
-      <div class="js-progress progress-bar">
-        <div class="js-progress-slider progress-indicator"></div>
-        <div class="progress-handle"></div>
       </div>
-      <div class="button_separator"></div>
-      <div class="js-duration"></div>
     </div>
 
-    <button class="js-fullscreen-button player-button">
-      <i class="fa fa-expand" aria-hidden="true"></i>
-    </button>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://unpkg.com/playable@2.10.3/dist/statics/playable.bundle.min.js"></script>
+    <script src="static/js/player.js"></script>
 
-  </div>
-</div>
-
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="https://unpkg.com/playable@2.10.3/dist/statics/playable.bundle.min.js"></script>
-<script src="static/js/player.js"></script>
-
-<script type="text/javascript">
-    createPlayer({elementId: 'player'});
-</script>
-</body>
+    <script>
+        createPlayer({elementId: 'player'});
+    </script>
+  </body>
 </html>
